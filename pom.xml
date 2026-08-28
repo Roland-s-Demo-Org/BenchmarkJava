@@ -606,6 +606,24 @@
 
     </profiles>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.mina</groupId>
+                <artifactId>mina-core</artifactId>
+                <version>2.2.9</version>
+            </dependency>
+            <!-- Force api-ldap-client-api to 2.1.8 (fixes CVE-2026-35563); apacheds-parent 2.0.0.AM27
+                 manages it at 2.1.5 which would otherwise win for the transitive copy pulled in by
+                 apacheds-protocol-ldap and other apacheds modules. -->
+            <dependency>
+                <groupId>org.apache.directory.api</groupId>
+                <artifactId>api-ldap-client-api</artifactId>
+                <version>2.1.8</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
@@ -765,19 +783,19 @@
         <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>
             <artifactId>httpclient5</artifactId>
-            <version>5.5.1</version>
+            <version>5.6.3</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.httpcomponents.core5</groupId>
             <artifactId>httpcore5</artifactId>
-            <version>5.3.6</version>
+            <version>5.4.3</version>
         </dependency>
 
         <dependency>
             <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.70</version>
+            <artifactId>bcprov-jdk18on</artifactId>
+            <version>1.85</version>
         </dependency>
 
         <!-- Kevin's fix for jar version conflicts. For future Benchmark 1.3 -->
@@ -854,7 +872,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.20.0</version>
+            <version>2.21.5</version>
         </dependency>
     </dependencies>
 
@@ -1244,15 +1262,15 @@
         </tomcat.jvmargs.debug>
         <log.directory>${project.build.directory}/log</log.directory>
 
-        <version.apache.api-ldap>2.1.7</version.apache.api-ldap>
+        <version.apache.api-ldap>2.1.8</version.apache.api-ldap>
         <version.apacheds>2.0.0.AM27</version.apacheds>
         <version.fluido>2.1.0</version.fluido>
         <!-- hibernate is up to rev 6+. But 4.0.0. causes this error: symbol: org.hibernate.classic.Session not found -->
-        <version.hibernate>3.6.10.Final</version.hibernate>
+        <version.hibernate>5.3.39.Final</version.hibernate>
         <version.spotbugs.maven>4.9.8.1</version.spotbugs.maven>
         <version.spotbugs>4.9.8</version.spotbugs>
         <!-- Spring 6.x requires Java 17 -->
-        <version.springframework>5.3.39</version.springframework>
+        <version.springframework>7.0.9</version.springframework>
         <!-- Tomcat 10 moves from Java EE to Jakarta EE, moving packages javax.* to jakarta.* - code changes likely required to address this change. -->
         <tomcat.major.version>9</tomcat.major.version>
         <version.tomcat>9.0.109</version.tomcat>
