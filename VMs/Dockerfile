@@ -1,5 +1,5 @@
 # This dockerfile builds a container that pulls down and runs the latest version of BenchmarkJava
-FROM ubuntu:latest
+FROM ubuntu:resolute-20261006@sha256:c098726dd9b9733f3e885f8de0ef375206a311b0a317eadc40d347b1115fb944
 MAINTAINER "Dave Wichers dave.wichers@owasp.org"
 
 RUN apt-get update
